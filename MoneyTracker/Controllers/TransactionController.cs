@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoneyTracker.Application.Interfaces;
+using MoneyTracker.Application.ViewModels;
+using MoneyTracker.Configuration;
 
 namespace MoneyTracker.Controllers
 {
@@ -6,35 +9,19 @@ namespace MoneyTracker.Controllers
     [Route("[controller]")]
     public class TransactionController : ControllerBase
     {
-        private static List<Transaction> _transactions = new List<Transaction>
-        {
-            new Expense(Expense.CategoryEnum.House)
-            {
-                Value = 100.50m,
-                Date = DateTime.Today,
-                Description = "TESTE"
-            }
-        };
-
+        private ITransactionAppService _transactionAppService;
         private readonly ILogger<TransactionController> _logger;
 
         public TransactionController(ILogger<TransactionController> logger)
         {
+            _transactionAppService = IoC.GetInstance<ITransactionAppService>();
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<Transaction> Get()
-        {
-            return _transactions;
-        }
-        
-        [HttpPost]
-        public ActionResult<Transaction> Post([FromBody] Transaction transaction)
-        {
-            _transactions.Add(transaction);
+        public async Task<IEnumerable<TransactionViewModel>> Get() => await _transactionAppService.GetAll();
 
-            return transaction;
-        }
+        [HttpPost]
+        public async Task<ActionResult<TransactionViewModel>> Post([FromBody] TransactionViewModel transaction) => await _transactionAppService.AddTransaction(transaction);
     }
 }
