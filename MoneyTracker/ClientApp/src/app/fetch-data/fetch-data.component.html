@@ -1,0 +1,32 @@
+<h1 id="tableLabel">Transações</h1>
+
+<p>Todas as transações cadastradas.</p>
+
+<p *ngIf="!transactions"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="transactions">
+  <thead>
+    <tr>
+      <th>Valor</th>
+      <th>Data</th>
+      <th>Tipo</th>
+      <th>Categoria</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.value }}</td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.type }}</td>
+      <td>{{ transaction.category }}</td>
+      <td>{{ transaction.description }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <button (click)="insert()">Inserir</button>
+      <button>Excluir</button>
+    </tr>
+  </tfoot>
+</table>
