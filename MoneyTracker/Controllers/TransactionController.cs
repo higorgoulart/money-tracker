@@ -9,19 +9,17 @@ namespace MoneyTracker.Controllers
     [Route("[controller]")]
     public class TransactionController : ControllerBase
     {
-        private ITransactionAppService _transactionAppService;
-        private readonly ILogger<TransactionController> _logger;
+        private readonly ITransactionAppService _transactionAppService;
 
-        public TransactionController(ILogger<TransactionController> logger)
+        public TransactionController()
         {
             _transactionAppService = IoC.GetInstance<ITransactionAppService>();
-            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<TransactionViewModel>> Get() => await _transactionAppService.GetAll();
 
         [HttpPost]
-        public async Task<ActionResult<TransactionViewModel>> Post([FromBody] TransactionViewModel transaction) => await _transactionAppService.AddTransaction(transaction);
+        public async Task<ActionResult<int>> Post([FromBody] TransactionViewModel transaction) => await _transactionAppService.AddTransaction(transaction);
     }
 }

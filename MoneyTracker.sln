@@ -11,6 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTracker.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTracker.Infra.CrossCutting.IoC", "MoneyTracker.Infra.CrossCutting.IoC\MoneyTracker.Infra.CrossCutting.IoC.csproj", "{51074717-52BC-49C2-B990-DBD7020BE37C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyTracker.Infra.Data", "MoneyTracker.Infra.Data\MoneyTracker.Infra.Data.csproj", "{206F3DCD-90A2-44E7-BCB1-599D854A861B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{A84AF414-06B2-46E9-B30F-6821374C6A4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{C2A91B5C-F876-4FD7-8830-7DEB0C785FB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{28576F52-8DF2-4A54-A3C1-62E5FB827938}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{98B4D120-01A3-4404-8759-6147CBAF0368}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,11 +43,22 @@ Global
 		{51074717-52BC-49C2-B990-DBD7020BE37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51074717-52BC-49C2-B990-DBD7020BE37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51074717-52BC-49C2-B990-DBD7020BE37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206F3DCD-90A2-44E7-BCB1-599D854A861B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206F3DCD-90A2-44E7-BCB1-599D854A861B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206F3DCD-90A2-44E7-BCB1-599D854A861B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206F3DCD-90A2-44E7-BCB1-599D854A861B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D86F5B9-A731-4F02-B6BB-E28450B71484}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71186B2A-B663-46B0-AF0D-FEC6D2D98E67} = {A84AF414-06B2-46E9-B30F-6821374C6A4C}
+		{734F17F1-CE73-40C4-831A-5B01E0EF3D4B} = {C2A91B5C-F876-4FD7-8830-7DEB0C785FB6}
+		{097A45CA-5D2E-4B09-88BB-604F80F930BE} = {28576F52-8DF2-4A54-A3C1-62E5FB827938}
+		{51074717-52BC-49C2-B990-DBD7020BE37C} = {98B4D120-01A3-4404-8759-6147CBAF0368}
+		{206F3DCD-90A2-44E7-BCB1-599D854A861B} = {98B4D120-01A3-4404-8759-6147CBAF0368}
 	EndGlobalSection
 EndGlobal

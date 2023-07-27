@@ -6,16 +6,22 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { NavLinkComponent } from './nav-menu/nav-link.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
+import { TransactionComponent } from './transaction/transaction.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import {ExpenseComponent} from "./expense/expense.component";
+import {RevenueComponent} from "./revenue/revenue.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
+    NavLinkComponent,
     HomeComponent,
-    CounterComponent,
+    TransactionComponent,
+    ExpenseComponent,
+    RevenueComponent,
     FetchDataComponent
   ],
   imports: [
@@ -24,7 +30,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'expense', component: ExpenseComponent },
+      { path: 'revenue', component: RevenueComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],

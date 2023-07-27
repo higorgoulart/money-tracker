@@ -23,6 +23,7 @@ export class FetchDataComponent {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
+
     const a: Transaction = {
       value: 15.7,
       date: new Date(),

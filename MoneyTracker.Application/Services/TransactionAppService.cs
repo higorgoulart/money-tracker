@@ -1,36 +1,31 @@
-﻿using MoneyTracker.Application.Interfaces;
+﻿using AutoMapper;
+using MoneyTracker.Application.Interfaces;
 using MoneyTracker.Application.ViewModels;
+using MoneyTracker.Domain.Entities;
+using MoneyTracker.Domain.Interfaces;
 
 namespace MoneyTracker.Application.Services;
 
 public class TransactionAppService : ITransactionAppService
 {
-    private readonly List<TransactionViewModel> _transactions;
+    private readonly IMapper _mapper;
+    private readonly ITransactionRepository _transactionRepository;
     
-    public TransactionAppService()
+    public TransactionAppService(
+        IMapper mapper,
+        ITransactionRepository transactionRepository)
     {
-        _transactions = new List<TransactionViewModel>
-        {
-            new TransactionViewModel
-            {
-                Value = 100.5M,
-                Date = DateTime.Today,
-                Type = 0,
-                Description = "TESTE",
-                Category = 1
-            }
-        };
+        _mapper = mapper;
+        _transactionRepository = transactionRepository;
     }
     
-    public Task<List<TransactionViewModel>> GetAll()
+    public async Task<List<TransactionViewModel>> GetAll()
     {
-        return Task.FromResult(_transactions);
+        return _mapper.Map<List<TransactionViewModel>>(await _transactionRepository.GetAll());
     }
     
-    public Task<TransactionViewModel> AddTransaction(TransactionViewModel transaction)
+    public async Task<int> AddTransaction(TransactionViewModel transaction)
     {
-        _transactions.Add(transaction);
-
-        return Task.FromResult(transaction);
+        return await _transactionRepository.Add(_mapper.Map<Transaction>(transaction));
     }
 }

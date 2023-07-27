@@ -1,0 +1,28 @@
+<div class="container h-full flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center text-center mb-5">
+    <h1 class="text-3xl mb-2">{{title}}</h1>
+    <p>{{subTitle}}</p>
+  </div>
+  <form class="flex flex-col justify-center" (ngSubmit)="onSubmit()">
+    <label class="mb-3">
+      Valor:
+      <input name="value" [(ngModel)]="transaction.value">
+    </label>
+    <label class="mb-3">
+      Data:
+      <input name="date" [(ngModel)]="transaction.date">
+    </label>
+    <label class="mb-3">
+      Descrição:
+      <input name="description" [(ngModel)]="transaction.description">
+    </label>
+    <label class="mb-3">
+      Categoria:
+      <select name="category" class="select" [(ngModel)]="transaction.category">
+        <option disabled selected>Selecione uma categoria</option>
+        <option [ngValue]="category" *ngFor="let category of categories">{{category.name}}</option>
+      </select>
+    </label>
+    <button type="submit" class="btn btn-success mt-2">Adicionar</button>
+  </form>
+</div>
